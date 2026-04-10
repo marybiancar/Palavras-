@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial Black', sans-serif;
+}
+
+body {
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    margin: 15px 0;
+}
+
+a {
+    position: relative;
+    text-decoration: none;
+    font-size: 5rem;
+    line-height: 1;
+    display: inline-block;
+    padding: 0 10px; /* Pequeno respiro lateral */
+    
+    /* Texto Vazado */
+    color: transparent;
+    -webkit-text-stroke: 1px #fff;
+    
+    /* Efeito de Preenchimento */
+    background: linear-gradient(to right, #fff 50%, transparent 50%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    
+    transition: background-position 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* A Barrinha */
+a::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    height: 80%;
+    width: 4px;
+    background-color: #fff;
+    
+    /* Início: Distante da palavra (à esquerda) */
+    left: -30px; 
+    
+    /* Sincronizado com o tempo do texto */
+    transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+/* Estado de Hover */
+a:hover {
+    background-position: 0% 0; /* Preenche o texto */
+}
+
+a:hover::before {
+    /* Final: Para exatamente na borda direita da palavra */
+    left: calc(100% - 4px); 
+}
